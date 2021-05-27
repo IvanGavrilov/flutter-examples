@@ -56,9 +56,7 @@ class _FlutterExampleView extends StatelessWidget {
       ),
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
-        child: Container(
-          height: 50.0,
-        ),
+        child: Container(height: 50.0),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -68,9 +66,8 @@ class _FlutterExampleView extends StatelessWidget {
         tooltip: 'Increment Counter',
         child: Icon(Icons.add),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       drawer: Drawer(
-        elevation: 20.0,
         child: Column(
           children: [
             UserAccountsDrawerHeader(
