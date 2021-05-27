@@ -17,8 +17,15 @@ class MyApp extends StatelessWidget {
           name: '/',
           page: () => HomePage(),
         ),
-        GetPage(name: '/plus', page: () => PlusPage(),),
-        GetPage(name: '/minus', page: () => MinusPage(), transition: Transition.zoom,)
+        GetPage(
+          name: '/plus',
+          page: () => PlusPage(),
+        ),
+        GetPage(
+          name: '/minus',
+          page: () => MinusPage(),
+          transition: Transition.zoom,
+        )
       ],
       unknownRoute: GetPage(
         name: '/',
@@ -40,11 +47,20 @@ class HomePage extends StatelessWidget {
     final Controller c = Get.put(Controller());
     return Scaffold(
       appBar: AppBar(title: Obx(() => Text("Count = ${c.count}"))),
-      body: Row(
-        children: [
-          TextButton(child: Text("+"), onPressed: () => Get.toNamed('/plus')),
-          TextButton(child: Text("-"), onPressed: () => Get.toNamed('/minus')),
-        ],
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Spacer(),
+            ElevatedButton(child: Text("+"), onPressed: () => Get.toNamed('/plus')),
+            Spacer(),
+            ElevatedButton(child: Text("-"), onPressed: () => Get.toNamed('/minus')),
+            Spacer(),
+          ],
+        ),
       ),
     );
   }
@@ -56,7 +72,9 @@ class PlusPage extends StatelessWidget {
     Controller c = Get.find();
     return Scaffold(
       appBar: AppBar(title: Obx(() => Text("Count = ${c.count}"))),
-      body: TextButton(child: Text("+"), onPressed: () => c.count++),
+      body: Center(
+        child: ElevatedButton(child: Text("+"), onPressed: () => c.count++),
+      ),
     );
   }
 }
@@ -67,7 +85,9 @@ class MinusPage extends StatelessWidget {
     Controller c = Get.find();
     return Scaffold(
       appBar: AppBar(title: Obx(() => Text("Count = ${c.count}"))),
-      body: TextButton(child: Text("-"), onPressed: () => c.count--),
+      body: Center(
+        child: ElevatedButton(child: Text("-"), onPressed: () => c.count--),
+      ),
     );
   }
 }
